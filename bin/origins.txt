@@ -1,1 +1,0 @@
-curl libcurl.so.4 libquiche.so # from ymuski/curl-http3 docker 86ccaacb50d5

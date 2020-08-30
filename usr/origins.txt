@@ -1,0 +1,25 @@
+freetls
+
+commit c1868896b95f2107131bdb0b596023f90068d4ba
+Merge: 246efec78a e786e3b03f
+Author: Eric Curtin <ericcurtin17@gmail.com>
+Date:   Sat Aug 29 14:41:39 2020 +0100
+
+    Merge remote-tracking branch 'akamai/master-quic-support' into master-quic-support
+
+nghttp3
+
+commit 7fbbef14a35ce03f34349199ef8424571f2b8df2
+Merge: 594f94d e1aa3a0
+Author: Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+Date:   Fri Aug 21 22:09:18 2020 +0900
+
+    Merge branch 'jasnell-fix-compile-windows-arm64' into master
+
+ngtcp2
+
+commit 00881d1e58cfa8e864ffa04907ed50c23fe67747
+Author: Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
+Date:   Sat Aug 29 18:22:00 2020 +0900
+
+    Update programmers' guide

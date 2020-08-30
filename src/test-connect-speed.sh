@@ -1,9 +1,14 @@
 #!/bin/bash
 
+#https://quic.rocks:4433/
+
 > http2-$$.txt
 > http3-$$.txt
 
-j=0
+export LD_LIBRARY_PATH=$PWD/../usr/lib
+
+j=0 # basicaly acting like a comment
+#host="https://quic.rocks:4433/"
 for i in {1..128}; do
   if [ $j -lt 7 ]; then
     if [ $j -eq 0 ]; then 
@@ -28,8 +33,8 @@ for i in {1..128}; do
     ((++j))
   fi
 
-  LD_LIBRARY_PATH=../bin ../bin/curl -m 1 --http2 -I -w "@curl-format.txt" -o /dev/null -s "$host" >> http2-$$.txt
-  LD_LIBRARY_PATH=../bin ../bin/curl -m 1 --http3 -I -w "@curl-format.txt" -o /dev/null -s "$host" >> http3-$$.txt
+  ../usr/bin/curl -m 1 --http2 -I -w "@curl-format.txt" -o /dev/null -s "$host" >> http2-$$.txt
+  ../usr/bin/curl -m 1 --http3 -I -w "@curl-format.txt" -o /dev/null -s "$host" >> http3-$$.txt
 done
 
 ./connect-speed-calc.pl http2-$$.txt http3-$$.txt
