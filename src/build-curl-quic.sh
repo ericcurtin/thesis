@@ -43,14 +43,13 @@ fi
 
 cd ../..
 if [ ! -d "$somewhere1" ]; then
-  git clone -b master https://github.com/freetls/freetls $somewhere1
+  git clone -b OpenSSL_1_1_1g-quic-draft-29 https://github.com/freetls/freetls $somewhere1
 fi
 
 cd freetls
 git clean -fdx
 git fetch
-git checkout master-quic-support
-git reset --hard origin/master-quic-support
+git reset --hard origin/OpenSSL_1_1_1g-quic-draft-29
 printf "freetls\n\n" > "$base/usr/origins.txt"
 git log -1 HEAD >> "$base/usr/origins.txt"
 ./config enable-tls1_3 --prefix=$somewhere1
@@ -93,8 +92,6 @@ autoreconf -i
 make -j$nproc
 make install
 
-exit 0
-
 # Build curl
 
 cd ..
@@ -105,7 +102,7 @@ fi
 cd curl
 git clean -fdx
 git fetch
-git reset --hard origin/master
+#git reset --hard origin/master
 printf "\ncurl\n\n" >> "$base/usr/origins.txt"
 git log -1 HEAD >> "$base/usr/origins.txt"
 ./buildconf
@@ -117,6 +114,8 @@ cp -R $somewhere1/* $somewhere1/..
 cp -R $somewhere2/* $somewhere2/..
 cp -R $somewhere3/* $somewhere3/..
 cp -R $somewhere4/* $somewhere4/..
+
+exit 0
 
 rm -rf $somewhere1
 rm -rf $somewhere2

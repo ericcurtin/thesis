@@ -90,7 +90,7 @@ while test $# -gt 0; do
         ;;
 
     --protocols)
-        for protocol in DICT FILE FTP FTPS GOPHER HTTP HTTPS IMAP IMAPS POP3 POP3S RTSP SMB SMBS SMTP SMTPS TELNET TFTP; do
+        for protocol in DICT FILE FTP FTPS GOPHER HTTP HTTPS IMAP IMAPS MQTT POP3 POP3S RTSP SMB SMBS SMTP SMTPS TELNET TFTP; do
             echo "$protocol"
         done
         ;;
@@ -172,7 +172,7 @@ while test $# -gt 0; do
 
     --static-libs)
         if test "Xyes" != "Xno" ; then
-          echo ${exec_prefix}/lib/libcurl.a -Wl,-rpath,/home/curtine/git/thesis/src/../usr/openssl-quic/lib -L/home/curtine/git/thesis/src/../usr/openssl-quic/lib -L/home/curtine/git/thesis/src/../usr/ngtcp2/lib -L/home/curtine/git/thesis/src/../usr/ngtcp2/lib -L/home/curtine/git/thesis/src/../usr/nghttp3/lib -lnghttp3 -lngtcp2_crypto_openssl -lngtcp2 -lssl -lcrypto -lssl -lcrypto -lz
+          echo ${exec_prefix}/lib/libcurl.a -Wl,-rpath,/home/curtine/git/thesis/src/../usr/freetls/lib -L/home/curtine/git/thesis/src/../usr/freetls/lib -L/home/curtine/git/thesis/src/../usr/ngtcp2/lib -L/home/curtine/git/thesis/src/../usr/ngtcp2/lib -L/home/curtine/git/thesis/src/../usr/nghttp3/lib -lnghttp3 -lngtcp2_crypto_openssl -lngtcp2 -lssl -lcrypto -lssl -lcrypto -lz
         else
           echo "curl was built with static libraries disabled" >&2
           exit 1
@@ -180,7 +180,7 @@ while test $# -gt 0; do
         ;;
 
     --configure)
-        echo " '--with-ssl=/home/curtine/git/thesis/src/../usr/openssl-quic' '--with-nghttp3=/home/curtine/git/thesis/src/../usr/nghttp3' '--with-ngtcp2=/home/curtine/git/thesis/src/../usr/ngtcp2' '--enable-alt-svc' '--prefix=/home/curtine/git/thesis/src/../usr/curl' 'LDFLAGS=-Wl,-rpath,/home/curtine/git/thesis/src/../usr/openssl-quic/lib'"
+        echo " '--with-ssl=/home/curtine/git/thesis/src/../usr/freetls' '--with-nghttp3=/home/curtine/git/thesis/src/../usr/nghttp3' '--with-ngtcp2=/home/curtine/git/thesis/src/../usr/ngtcp2' '--enable-alt-svc' '--prefix=/home/curtine/git/thesis/src/../usr/curl' 'LDFLAGS=-Wl,-rpath,/home/curtine/git/thesis/src/../usr/freetls/lib'"
         ;;
 
     *)

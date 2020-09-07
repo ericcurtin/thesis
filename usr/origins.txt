@@ -1,11 +1,11 @@
 freetls
 
-commit c1868896b95f2107131bdb0b596023f90068d4ba
-Merge: 246efec78a e786e3b03f
+commit 6f62c3ab44c80f36230c5861bfcb124252d71d25
+Merge: 56456c3404 dac2d09523
 Author: Eric Curtin <ericcurtin17@gmail.com>
-Date:   Sat Aug 29 14:41:39 2020 +0100
+Date:   Sat Aug 29 16:42:04 2020 +0100
 
-    Merge remote-tracking branch 'akamai/master-quic-support' into master-quic-support
+    Merge remote-tracking branch 'tatsuhiro-t/OpenSSL_1_1_1g-quic-draft-29' into OpenSSL_1_1_1-stable
 
 nghttp3
 
@@ -18,8 +18,16 @@ Date:   Fri Aug 21 22:09:18 2020 +0900
 
 ngtcp2
 
-commit 00881d1e58cfa8e864ffa04907ed50c23fe67747
+commit f64358e91620f889ad85936f3f2cd5528483f62b
 Author: Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
-Date:   Sat Aug 29 18:22:00 2020 +0900
+Date:   Tue Sep 1 22:41:48 2020 +0900
 
-    Update programmers' guide
+    Specify tag
+
+curl
+
+commit 147eca8ba4ff78bf496cc1b59997ab4a24364b71
+Author: Daniel Stenberg <daniel@haxx.se>
+Date:   Mon Aug 31 09:54:52 2020 +0200
+
+    RELEASE-NOTES: synced
