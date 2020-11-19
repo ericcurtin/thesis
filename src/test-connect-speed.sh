@@ -9,7 +9,7 @@ export LD_LIBRARY_PATH=$PWD/../usr/lib
 
 j=0 # basicaly acting like a comment
 #host="https://quic.rocks:4433/"
-for i in {1..128}; do
+for i in {1..32}; do
   if [ $j -lt 7 ]; then
     if [ $j -eq 0 ]; then 
       host="https://www.google.com/"
@@ -33,8 +33,8 @@ for i in {1..128}; do
     ((++j))
   fi
 
-  ../usr/bin/curl -m 1 --http2 -I -w "@curl-format.txt" -o /dev/null -s "$host" >> http2-$$.txt
-  ../usr/bin/curl -m 1 --http3 -I -w "@curl-format.txt" -o /dev/null -s "$host" >> http3-$$.txt
+  ../usr/bin/curl -m 2 --http2 -I -w "@curl-format.txt" -o /dev/null -s "$host" >> http2-$$.txt
+  ../usr/bin/curl -m 2 --http3 -I -w "@curl-format.txt" -o /dev/null -s "$host" >> http3-$$.txt
 done
 
 ./connect-speed-calc.pl http2-$$.txt http3-$$.txt

@@ -18,11 +18,11 @@ Date:   Fri Aug 21 22:09:18 2020 +0900
 
 ngtcp2
 
-commit f64358e91620f889ad85936f3f2cd5528483f62b
+commit 054eb2d9b4bb7c3b7e013ded2aafa6dc4f88dd57
 Author: Tatsuhiro Tsujikawa <tatsuhiro.t@gmail.com>
-Date:   Tue Sep 1 22:41:48 2020 +0900
+Date:   Sat Sep 12 17:24:30 2020 +0900
 
-    Specify tag
+    Migrate to docker/build-push-action@v2
 
 curl
 
