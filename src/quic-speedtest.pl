@@ -97,7 +97,7 @@ sub run_client_server {
   my $duration = time() - $now;
   print("$duration\n");
   if ($attribute) {
-    if ($duration > 0.4 && $duration < 0.9 && $duration < $duration_to_beat) {
+    if ($duration > 0.4 && $duration < 0.73 && $duration < $duration_to_beat) {
       $duration_to_beat = $duration;
       write_cfg();
     }
