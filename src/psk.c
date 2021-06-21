@@ -20,10 +20,10 @@
 
 #define MAX_BUF_SIZE 1024
 
-#define MSG1_REQ "NVMe request 1\n"
-#define MSG1_RES "NVMe response 1\n"
-#define MSG2_REQ "NVMe request 2\n"
-#define MSG2_RES "NVMe response 2\n"
+#define MSG1_REQ "NVMe req 1\n"
+#define MSG1_RES "NVMe res 1\n"
+#define MSG2_REQ "NVMe req 2\n"
+#define MSG2_RES "NVMe res 2\n"
 
 #define SERVER_IP "127.0.0.1"
 
@@ -229,6 +229,8 @@ int do_data_transfer(SSL* ssl) {
   const char* res;
   char buf[MAX_BUF_SIZE] = {0};
   int ret, i;
+
+  for (int j = 0; j <= 131072000; j += 22) {
   for (i = 0; i < sizeof(msg_res) / sizeof(msg_res[0]); i++) {
     res = msg_res[i];
     ret = SSL_read(ssl, buf, sizeof(buf) - 1);
@@ -246,20 +248,26 @@ int do_data_transfer(SSL* ssl) {
 
     printf("SSL_write[%d] sent %s\n", ret, res);
   }
+  }
 
   return 0;
 }
 #endif
 
+// 1 Gbit = 125 megabytes = 131,072,000 bytes
 #ifdef CLIENT
 int do_data_transfer(SSL* ssl) {
   const char* msg_req[] = {MSG1_REQ, MSG2_REQ};
   const char* req;
   char buf[MAX_BUF_SIZE] = {0};
   int ret, i;
+  int len_sent = 0;
+
+  for (int j = 0; j <= 131072000; j += 22) {
   for (i = 0; i < sizeof(msg_req) / sizeof(msg_req[0]); i++) {
     req = msg_req[i];
-    ret = SSL_write(ssl, req, strlen(req));
+    const int this_len = strlen(req);
+    ret = SSL_write(ssl, req, this_len);
     if (ret <= 0) {
       printf("SSL_write failed ret=%d\n", ret);
       return -1;
@@ -273,7 +281,11 @@ int do_data_transfer(SSL* ssl) {
     }
 
     printf("SSL_read[%d] %s\n", ret, buf);
+    len_sent += this_len;
   }
+  }
+
+  printf("%d bytes sent\n", len_sent);
 
   return 0;
 }
