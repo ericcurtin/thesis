@@ -57,7 +57,7 @@ sub run_server {
   sleep(0.2);
 }
 
-my $large_file = "symm/1GB.bin";
+my $large_file = "1GB.bin";
 
 sub run_client {
   if ("$ARGV[0]" eq "tcp") {
